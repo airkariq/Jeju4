@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>제주특별자치도 인구정책 현황 및 구조적 대전환 전략 대시보드</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Chart.js for interactive charts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Google Fonts Inter & Pretendard -->
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Pretendard', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased min-h-screen flex flex-col">
+
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-emerald-800 via-teal-800 to-cyan-900 text-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col md:flex-row justify-between items-center">
+            <div class="flex items-center space-x-3 mb-2 md:mb-0">
+                <div class="bg-emerald-600 p-2.5 rounded-xl shadow-inner">
+                    <i class="fa-solid fa-chart-line text-xl"></i>
+                </div>
+                <div>
+                    <h1 class="text-xl md:text-2xl font-bold tracking-tight">제주특별자치도 인구정책 대시보드</h1>
+                    <p class="text-xs text-emerald-200">구조적 대전환 전략 (2025~2029) 및 2026 시행계획 분석</p>
+                </div>
+            </div>
+            <div class="flex items-center space-x-2 bg-emerald-900/60 px-3 py-1.5 rounded-full border border-emerald-700/50 text-xs font-medium">
+                <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span>실시간 생활인구 연계 모니터링 체계 가동 중</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+
+        <!-- KPI Summary Cards -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            <!-- Card 1 -->
+            <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 hover:shadow-md transition-all">
+                <div class="flex justify-between items-start">
+                    <div>
+                        <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider">총인구 (2025년 11월)</p>
+                        <h3 class="text-2xl font-bold text-slate-900 mt-1">693,297 <span class="text-sm font-normal text-slate-500">명</span></h3>
+                    </div>
+                    <div class="p-3 bg-red-50 text-red-600 rounded-xl">
+                        <i class="fa-solid fa-arrow-trend-down text-lg"></i>
+                    </div>
+                </div>
+                <div class="mt-4 flex items-center text-xs text-red-600 font-medium">
+                    <i class="fa-solid fa-triangle-exclamation mr-1"></i> 전년 대비 약 5,000명 감소 추세
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 hover:shadow-md transition-all">
+                <div class="flex justify-between items-start">
+                    <div>
+                        <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider">합계출산율 (2025)</p>
+                        <h3 class="text-2xl font-bold text-slate-900 mt-1">0.87 <span class="text-sm font-normal text-slate-500">명</span></h3>
+                    </div>
+                    <div class="p-3 bg-teal-50 text-teal-600 rounded-xl">
+                        <i class="fa-solid fa-baby text-lg"></i>
+                    </div>
+                </div>
+                <div class="mt-4 flex items-center text-xs text-emerald-600 font-medium">
+                    <i class="fa-solid fa-arrow-trend-up mr-1"></i> 소폭 반등 (출생아 2,950명)
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 hover:shadow-md transition-all">
+                <div class="flex justify-between items-start">
+                    <div>
+                        <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider">65세 이상 고령인구 비중</p>
+                        <h3 class="text-2xl font-bold text-slate-900 mt-1">20.5% <span class="text-sm font-normal text-slate-500">초고령사회</span></h3>
+                    </div>
+                    <div class="p-3 bg-amber-50 text-amber-600 rounded-xl">
+                        <i class="fa-solid fa-person-cane text-lg"></i>
+                    </div>
+                </div>
+                <div class="mt-4 flex items-center text-xs text-amber-600 font-medium">
+                    <i class="fa-solid fa-circle-exclamation mr-1"></i> 노년부양비 28.4로 급증
+                </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 hover:shadow-md transition-all">
+                <div class="flex justify-between items-start">
+                    <div>
+                        <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider">2026년 시행 예산</p>
+                        <h3 class="text-2xl font-bold text-slate-900 mt-1">4,150 <span class="text-sm font-normal text-slate-500">억원</span></h3>
+                    </div>
+                    <div class="p-3 bg-indigo-50 text-indigo-600 rounded-xl">
+                        <i class="fa-solid fa-coins text-lg"></i>
+                    </div>
+                </div>
+                <div class="mt-4 flex items-center text-xs text-indigo-600 font-medium">
+                    <i class="fa-solid fa-circle-check mr-1"></i> 신규사업 27개 포함 총 132개 사업
+                </div>
+            </div>
+        </div>
+
+        <!-- Charts Section -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <!-- Chart 1: Population and Birth Rate trend -->
+            <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100">
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-lg font-bold text-slate-900 flex items-center">
+                        <i class="fa-solid fa-chart-bar text-teal-600 mr-2"></i> 제주 인구 지표 추이 (2022~2025)
+                    </h2>
+                    <span class="text-xs text-slate-500 bg-slate-100 px-2.5 py-1 rounded-lg">통계청 및 도청 자료</span>
+                </div>
+                <div class="relative h-72">
+                    <canvas id="trendChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Chart 2: Paradigm Shift (Resident vs Lifestyle Population) -->
+            <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100">
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-lg font-bold text-slate-900 flex items-center">
+                        <i class="fa-solid fa-bullseye text-teal-600 mr-2"></i> 생활인구 목표 로드맵 (2029 / 2040)
+                    </h2>
+                    <span class="text-xs text-slate-500 bg-slate-100 px-2.5 py-1 rounded-lg">제2차 종합계획 목표</span>
+                </div>
+                <div class="relative h-72">
+                    <canvas id="lifestyleChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Strategic Pillars Section -->
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100">
+            <h2 class="text-lg font-bold text-slate-900 mb-6 flex items-center">
+                <i class="fa-solid fa-shield-halved text-teal-600 mr-2"></i> 제2차 인구정책 종합계획 3대 핵심 전략 및 분야별 주요 정책
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Strategy 1 -->
+                <div class="bg-slate-50 rounded-xl p-5 border border-slate-200/60 flex flex-col justify-between hover:border-teal-300 transition-all">
+                    <div>
+                        <div class="inline-block bg-teal-100 text-teal-800 text-xs font-semibold px-2.5 py-1 rounded-full mb-3">전략 01</div>
+                        <h3 class="font-bold text-slate-900 text-base mb-2">친환경 신산업 일자리 기반 구축</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                            농림어업 축소 및 서비스업 편중 구조를 타개하기 위해 신재생에너지, 우주항공, 바이오 등 차세대 고부가가치 청년 일자리를 창출하고 제주더큰내일센터와 연계합니다.
+                        </p>
+                    </div>
+                    <div class="border-t border-slate-200 pt-3 text-xs text-teal-700 font-medium flex items-center">
+                        <i class="fa-solid fa-arrow-right mr-1.5"></i> 청년 구직 장기화(18.1개월) 해소 유도
+                    </div>
+                </div>
+
+                <!-- Strategy 2 -->
+                <div class="bg-slate-50 rounded-xl p-5 border border-slate-200/60 flex flex-col justify-between hover:border-teal-300 transition-all">
+                    <div>
+                        <div class="inline-block bg-teal-100 text-teal-800 text-xs font-semibold px-2.5 py-1 rounded-full mb-3">전략 02</div>
+                        <h3 class="font-bold text-slate-900 text-base mb-2">제주형 생활인구 선순환 생태계</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                            정주인구 총량 확대 방식에서 벗어나 워케이션, 런케이션, 디지털 노마드 등 체류 및 관계인구를 활성화하여 2029년까지 생활인구 85만 명을 달성합니다.
+                        </p>
+                    </div>
+                    <div class="border-t border-slate-200 pt-3 text-xs text-teal-700 font-medium flex items-center">
+                        <i class="fa-solid fa-arrow-right mr-1.5"></i> 통신사 빅데이터 기반 실시간 추계 적용
+                    </div>
+                </div>
+
+                <!-- Strategy 3 -->
+                <div class="bg-slate-50 rounded-xl p-5 border border-slate-200/60 flex flex-col justify-between hover:border-teal-300 transition-all">
+                    <div>
+                        <div class="inline-block bg-teal-100 text-teal-800 text-xs font-semibold px-2.5 py-1 rounded-full mb-3">전략 03</div>
+                        <h3 class="font-bold text-slate-900 text-base mb-2">수요 탄력적 정주인구 지원체제</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                            손주돌봄수당(월 최대 60만원), 제주 해피아이 육아지원금(5년간 1,000만 원), 무주택 청년·신혼부부 주거비 및 전세대출 이자 지원 등 생애주기별 복지를 강화합니다.
+                        </p>
+                    </div>
+                    <div class="border-t border-slate-200 pt-3 text-xs text-teal-700 font-medium flex items-center">
+                        <i class="fa-solid fa-arrow-right mr-1.5"></i> 출생아 수 반등 및 양육 공백 해소
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Data Table / Key Policies Interactive Explorer -->
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
+                <div>
+                    <h2 class="text-lg font-bold text-slate-900 flex items-center">
+                        <i class="fa-solid fa-table-list text-teal-600 mr-2"></i> 주요 인구정책 사업 세부 현황표
+                    </h2>
+                    <p class="text-xs text-slate-500 mt-0.5">분야별 핵심 지원 제도 및 대상 요약</p>
+                </div>
+                <div class="w-full sm:w-auto">
+                    <input type="text" id="policySearch" placeholder="정책명 또는 내용 검색..." class="w-full sm:w-64 px-4 py-2 text-xs border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-teal-500">
+                </div>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left text-xs text-slate-600 border-collapse">
+                    <thead class="bg-slate-100 text-slate-700 uppercase font-semibold">
+                        <tr>
+                            <th class="p-3.5 rounded-l-xl">분야</th>
+                            <th class="p-3.5">사업명</th>
+                            <th class="p-3.5">대상 및 자격 기준</th>
+                            <th class="p-3.5 rounded-r-xl">지원 내용 및 금액</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-100" id="policyTableBody">
+                        <tr class="hover:bg-slate-50/80 transition-colors">
+                            <td class="p-3.5 font-medium text-slate-900"><span class="px-2 py-1 bg-pink-50 text-pink-700 rounded-md">출산·돌봄</span></td>
+                            <td class="p-3.5 font-semibold text-slate-800">손주돌봄수당 지원사업</td>
+                            <td class="p-3.5">중위소득 150% 이하, 24~47개월 영아 돌보는 조부모</td>
+                            <td class="p-3.5 text-teal-700 font-medium">월 40시간 이상 돌봄 시 월 30만 ~ 60만 원 지원</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50/80 transition-colors">
+                            <td class="p-3.5 font-medium text-slate-900"><span class="px-2 py-1 bg-pink-50 text-pink-700 rounded-md">출산·주거</span></td>
+                            <td class="p-3.5 font-semibold text-slate-800">제주 해피아이 육아지원금</td>
+                            <td class="p-3.5">도내 6개월 이상 거주 출산 가구</td>
+                            <td class="p-3.5 text-teal-700 font-medium">육아지원금(1,000만 원/5년) 또는 주거임차비(1,400만 원/5년)</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50/80 transition-colors">
+                            <td class="p-3.5 font-medium text-slate-900"><span class="px-2 py-1 bg-purple-50 text-purple-700 rounded-md">소상공인</span></td>
+                            <td class="p-3.5 font-semibold text-slate-800">1인 소상공인 출산급여</td>
+                            <td class="p-3.5">도내 6개월 이상 사업 운영 출산 여성 소상공인</td>
+                            <td class="p-3.5 text-teal-700 font-medium">3개월간 월 30만 원 (대체근로자비 최대 600만 원)</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50/80 transition-colors">
+                            <td class="p-3.5 font-medium text-slate-900"><span class="px-2 py-1 bg-blue-50 text-blue-700 rounded-md">청년 정착</span></td>
+                            <td class="p-3.5 font-semibold text-slate-800">청년 전입 축하장려금</td>
+                            <td class="p-3.5">도외에서 제주특별자치도로 전입하는 청년</td>
+                            <td class="p-3.5 text-teal-700 font-medium">전입 축하금 및 초기 정착 인센티브 지급</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50/80 transition-colors">
+                            <td class="p-3.5 font-medium text-slate-900"><span class="px-2 py-1 bg-blue-50 text-blue-700 rounded-md">청년 일자리</span></td>
+                            <td class="p-3.5 font-semibold text-slate-800">제주더큰내일센터 운영</td>
+                            <td class="p-3.5">도내 구직 청년 및 예비 창업가</td>
+                            <td class="p-3.5 text-teal-700 font-medium">맞춤형 인재 양성 교육 및 훈련 수당 지급</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50/80 transition-colors">
+                            <td class="p-3.5 font-medium text-slate-900"><span class="px-2 py-1 bg-amber-50 text-amber-700 rounded-md">이민·외국인</span></td>
+                            <td class="p-3.5 font-semibold text-slate-800">외국인주민 및 이민 지원 조례</td>
+                            <td class="p-3.5">도내 체류 외국인, 다문화가족, 이민자</td>
+                            <td class="p-3.5 text-teal-700 font-medium">이민지원위원회 설치, 지역특화비자 및 정착 지원</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Structural Challenges & Recommendations -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+            <!-- Limitations -->
+            <div class="bg-amber-50/70 border border-amber-200 rounded-2xl p-6 shadow-sm">
+                <h3 class="text-base font-bold text-amber-900 mb-3 flex items-center">
+                    <i class="fa-solid fa-triangle-exclamation mr-2 text-amber-600"></i> 구조적 한계 및 정책적 괴리
+                </h3>
+                <ul class="space-y-2.5 text-xs text-amber-900/80 leading-relaxed list-disc list-inside">
+                    <li><strong class="font-semibold text-amber-950">재정 회계 종속성:</strong> 중앙정부의 13개 기능별 세출 예산 체계에 종속되어 지역 특화형 복합 인구 예산 수립의 한계 존재</li>
+                    <li><strong class="font-semibold text-amber-950">성과평가 메커니즘 부재:</strong> 26개 위기 지표 중 58%가 실시간 측정되지 않으며, 단순 산출물(Output) 중심 평가에 집중</li>
+                    <li><strong class="font-semibold text-amber-950">트레이드오프 발생:</strong> 워케이션 등 생활인구 유입 정책이 도내 부동산 및 임대료를 상승시켜 청년 RIR 부담 가중 우려</li>
+                </ul>
+            </div>
+
+            <!-- Recommendations -->
+            <div class="bg-teal-50/70 border border-teal-200 rounded-2xl p-6 shadow-sm">
+                <h3 class="text-base font-bold text-teal-900 mb-3 flex items-center">
+                    <i class="fa-solid fa-lightbulb mr-2 text-teal-600"></i> 핵심 정책 제언 및 과제
+                </h3>
+                <ul class="space-y-2.5 text-xs text-teal-900/80 leading-relaxed list-disc list-inside">
+                    <li><strong class="font-semibold text-teal-950">예산 자율성 및 영향평가 의무화:</strong> '인구정책 통합 예산서' 수립 및 인구영향평가 제도의 조례상 의무화 추진</li>
+                    <li><strong class="font-semibold text-teal-950">일자리-주거 연계 고도화:</strong> 친환경 신산업(우주항공, 신재생) 일자리 창출과 공공임대주택 공급의 긴밀한 결합</li>
+                    <li><strong class="font-semibold text-teal-950">체류 인구의 정주 전환:</strong> 단기 체류객 및 워케이션 방문객을 관계인구 및 정주인구로 안착시키는 코디네이팅 강화</li>
+                </ul>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-6 text-center text-xs border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4">
+            <p>제주특별자치도 제2차 인구정책 종합계획(2025~2029) 및 2026년 시행계획 보고서 기반 대시보드</p>
+            <p class="mt-1 text-slate-500">&copy; 2026 Jeju Special Self-Governing Province Population Policy Division. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Script for Charts and Table Filtering -->
+    <script>
+        // Trend Chart (Population & Birth Rate)
+        const ctxTrend = document.getElementById('trendChart').getContext('2d');
+        new Chart(ctxTrend, {
+            type: 'bar',
+            data: {
+                labels: ['2022년', '2023년', '2024년', '2025년 (추정)'],
+                datasets: [
+                    {
+                        label: '합계출산율 (명)',
+                        data: [0.95, 0.83, 0.81, 0.87],
+                        backgroundColor: 'rgba(13, 148, 136, 0.8)',
+                        borderColor: 'rgba(13, 148, 136, 1)',
+                        borderWidth: 1,
+                        yAxisID: 'y1',
+                        borderRadius: 6
+                    },
+                    {
+                        label: '순이동자 수 (명)',
+                        data: [-1200, -2100, -3361, -4273],
+                        type: 'line',
+                        borderColor: 'rgba(239, 68, 68, 0.8)',
+                        backgroundColor: 'rgba(239, 68, 68, 0.1)',
+                        borderWidth: 2,
+                        tension: 0.3,
+                        yAxisID: 'y2',
+                        fill: false
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y1: {
+                        type: 'linear',
+                        position: 'left',
+                        min: 0,
+                        max: 1.2,
+                        grid: { display: false },
+                        title: { display: true, text: '합계출산율 (명)' }
+                    },
+                    y2: {
+                        type: 'linear',
+                        position: 'right',
+                        min: -5000,
+                        max: 500,
+                        grid: { color: 'rgba(241, 245, 249, 1)' },
+                        title: { display: true, text: '순이동자 수 (명)' }
+                    }
+                },
+                plugins: {
+                    legend: { position: 'bottom', labels: { boxWidth: 12, font: { size: 11 } } }
+                }
+            }
+        });
+
+        // Lifestyle Population Chart
+        const ctxLife = document.getElementById('lifestyleChart').getContext('2d');
+        new Chart(ctxLife, {
+            type: 'doughnut',
+            data: {
+                labels: ['현재 정주인구 (약 69만명)', '체류·관계인구 (생활인구 구성)', '목표 추가 유치 (2029년 85만명)'],
+                datasets: [{
+                    data: [69.3, 13.7, 2.0],
+                    backgroundColor: [
+                        'rgba(15, 23, 42, 0.8)',
+                        'rgba(13, 148, 136, 0.8)',
+                        'rgba(56, 189, 248, 0.8)'
+                    ],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { position: 'bottom', labels: { boxWidth: 12, font: { size: 11 } } },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return context.label + ': ' + context.raw + '만 명';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // Search Filter for Table
+        const searchInput = document.getElementById('policySearch');
+        const tableBody = document.getElementById('policyTableBody');
+        const rows = tableBody.getElementsByTagName('tr');
+
+        searchInput.addEventListener('keyup', function() {
+            const query = searchInput.value.toLowerCase();
+            for (let i = 0; i < rows.length; i++) {
+                const text = rows[i].textContent.toLowerCase();
+                if (text.includes(query)) {
+                    rows[i].style.display = '';
+                } else {
+                    rows[i].style.display = 'none';
+                }
+            }
+        });
+    </script>
+</body>
+</html>
